@@ -158,6 +158,10 @@ COPY ./130_load_demo_atlas_cohort_definitions.sql /docker-entrypoint-initdb.d/13
 # 140 - load demo Atlas concept set definitions
 COPY ./140_load_demo_atlas_conceptset_definitions.sql /docker-entrypoint-initdb.d/140_load_sample_atlas_conceptset_definitions.sql
 
+# 1xx - customs
+COPY ./150_fix_auto-increments.sql /docker-entrypoint-initdb.d/
+COPY ./160_add_validity.sql /docker-entrypoint-initdb.d/
+
 RUN ["sed", "-i", "s/exec \"$@\"/echo \"skipping...\"/", "/usr/local/bin/docker-entrypoint.sh"]
 
 # Pseudo branching logic - we run 2 stages, 1 for default password auth, the other for secrets auth
