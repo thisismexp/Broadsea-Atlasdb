@@ -4,7 +4,7 @@ set search_path = demo_cdm;
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE PERSON (
-			person_id integer NOT NULL,
+			person_id SERIAL,
 			gender_concept_id integer NOT NULL,
 			year_of_birth integer NOT NULL,
 			month_of_birth integer NULL,
@@ -25,7 +25,7 @@ CREATE TABLE PERSON (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE OBSERVATION_PERIOD (
-			observation_period_id integer NOT NULL,
+			observation_period_id SERIAL,
 			person_id integer NOT NULL,
 			observation_period_start_date date NOT NULL,
 			observation_period_end_date date NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE OBSERVATION_PERIOD (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE VISIT_OCCURRENCE (
-			visit_occurrence_id integer NOT NULL,
+			visit_occurrence_id SERIAL,
 			person_id integer NOT NULL,
 			visit_concept_id integer NOT NULL,
 			visit_start_date date NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE VISIT_OCCURRENCE (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE VISIT_DETAIL (
-			visit_detail_id integer NOT NULL,
+			visit_detail_id SERIAL,
 			person_id integer NOT NULL,
 			visit_detail_concept_id integer NOT NULL,
 			visit_detail_start_date date NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE VISIT_DETAIL (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE CONDITION_OCCURRENCE (
-			condition_occurrence_id integer NOT NULL,
+			condition_occurrence_id SERIAL,
 			person_id integer NOT NULL,
 			condition_concept_id integer NOT NULL,
 			condition_start_date date NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE CONDITION_OCCURRENCE (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE DRUG_EXPOSURE (
-			drug_exposure_id integer NOT NULL,
+			drug_exposure_id SERIAL,
 			person_id integer NOT NULL,
 			drug_concept_id integer NOT NULL,
 			drug_exposure_start_date date NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE DRUG_EXPOSURE (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE PROCEDURE_OCCURRENCE (
-			procedure_occurrence_id integer NOT NULL,
+			procedure_occurrence_id SERIAL,
 			person_id integer NOT NULL,
 			procedure_concept_id integer NOT NULL,
 			procedure_date date NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE PROCEDURE_OCCURRENCE (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE DEVICE_EXPOSURE (
-			device_exposure_id integer NOT NULL,
+			device_exposure_id SERIAL,
 			person_id integer NOT NULL,
 			device_concept_id integer NOT NULL,
 			device_exposure_start_date date NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE DEVICE_EXPOSURE (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE MEASUREMENT (
-			measurement_id integer NOT NULL,
+			measurement_id SERIAL,
 			person_id integer NOT NULL,
 			measurement_concept_id integer NOT NULL,
 			measurement_date date NOT NULL,
@@ -187,7 +187,7 @@ CREATE TABLE MEASUREMENT (
 			
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE OBSERVATION (
-			observation_id integer NOT NULL,
+			observation_id SERIAL,
 			person_id integer NOT NULL,
 			observation_concept_id integer NOT NULL,
 			observation_date date NOT NULL,
@@ -221,7 +221,7 @@ CREATE TABLE DEATH (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE NOTE (
-			note_id integer NOT NULL,
+			note_id SERIAL,
 			person_id integer NOT NULL,
 			note_date date NOT NULL,
 			note_datetime TIMESTAMP NULL,
@@ -240,7 +240,7 @@ CREATE TABLE NOTE (
 			
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE NOTE_NLP (
-			note_nlp_id integer NOT NULL,
+			note_nlp_id SERIAL,
 			note_id integer NOT NULL,
 			section_concept_id integer NULL,
 			snippet varchar(250) NULL,
@@ -257,7 +257,7 @@ CREATE TABLE NOTE_NLP (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE SPECIMEN (
-			specimen_id integer NOT NULL,
+			specimen_id SERIAL,
 			person_id integer NOT NULL,
 			specimen_concept_id integer NOT NULL,
 			specimen_type_concept_id integer NOT NULL,
@@ -283,7 +283,7 @@ CREATE TABLE FACT_RELATIONSHIP (
 
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE LOCATION (
-			location_id integer NOT NULL,
+			location_id SERIAL,
 			address_1 varchar(50) NULL,
 			address_2 varchar(50) NULL,
 			city varchar(50) NULL,
@@ -298,7 +298,7 @@ CREATE TABLE LOCATION (
 			
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE CARE_SITE (
-			care_site_id integer NOT NULL,
+			care_site_id SERIAL,
 			care_site_name varchar(255) NULL,
 			place_of_service_concept_id integer NULL,
 			location_id integer NULL,
@@ -307,7 +307,7 @@ CREATE TABLE CARE_SITE (
 
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE PROVIDER (
-			provider_id integer NOT NULL,
+			provider_id SERIAL,
 			provider_name varchar(255) NULL,
 			npi varchar(20) NULL,
 			dea varchar(20) NULL,
@@ -323,7 +323,7 @@ CREATE TABLE PROVIDER (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE PAYER_PLAN_PERIOD (
-			payer_plan_period_id integer NOT NULL,
+			payer_plan_period_id SERIAL,
 			person_id integer NOT NULL,
 			payer_plan_period_start_date date NOT NULL,
 			payer_plan_period_end_date date NOT NULL,
@@ -343,7 +343,7 @@ CREATE TABLE PAYER_PLAN_PERIOD (
 
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE COST (
-			cost_id integer NOT NULL,
+			cost_id SERIAL,
 			cost_event_id integer NOT NULL,
 			cost_domain_id varchar(20) NOT NULL,
 			cost_type_concept_id integer NOT NULL,
@@ -368,7 +368,7 @@ CREATE TABLE COST (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE DRUG_ERA (
-			drug_era_id integer NOT NULL,
+			drug_era_id SERIAL,
 			person_id integer NOT NULL,
 			drug_concept_id integer NOT NULL,
 			drug_era_start_date date NOT NULL,
@@ -378,7 +378,7 @@ CREATE TABLE DRUG_ERA (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE DOSE_ERA (
-			dose_era_id integer NOT NULL,
+			dose_era_id SERIAL,
 			person_id integer NOT NULL,
 			drug_concept_id integer NOT NULL,
 			unit_concept_id integer NOT NULL,
@@ -388,7 +388,7 @@ CREATE TABLE DOSE_ERA (
 			
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE CONDITION_ERA (
-			condition_era_id integer NOT NULL,
+			condition_era_id SERIAL,
 			person_id integer NOT NULL,
 			condition_concept_id integer NOT NULL,
 			condition_era_start_date date NOT NULL,
@@ -397,7 +397,7 @@ CREATE TABLE CONDITION_ERA (
 
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE episode (
-			episode_id integer NOT NULL,
+			episode_id SERIAL,
 			person_id integer NOT NULL,
 			episode_concept_id integer NOT NULL,
 			episode_start_date date NOT NULL,
@@ -419,7 +419,7 @@ CREATE TABLE episode_event (
 			
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE METADATA (
-			metadata_id integer NOT NULL,
+			metadata_id SERIAL,
 			metadata_concept_id integer NOT NULL,
 			metadata_type_concept_id integer NOT NULL,
 			name varchar(250) NOT NULL,
@@ -445,7 +445,7 @@ CREATE TABLE CDM_SOURCE (
 			
 --HINT DISTRIBUTE ON RANDOM
 CREATE TABLE CONCEPT (
-			concept_id integer NOT NULL,
+			concept_id SERIAL,
 			concept_name varchar(255) NOT NULL,
 			domain_id varchar(20) NOT NULL,
 			vocabulary_id varchar(20) NOT NULL,
